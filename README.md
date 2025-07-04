@@ -47,10 +47,12 @@
 
 ## 🚀 How to Run / Cách chạy chương trình
 
-### 1. Install dependencies / Cài đặt thư viện: pip install opencv-python mediapipe pyautogui pycaw numpy
-### 2. Run / Chạy: python main_app.py
-###💡 Make sure your webcam is working.
-###💡 Đảm bảo webcam đang hoạt động.
+### 1. Install dependencies / Cài đặt thư viện: 
+pip install opencv-python mediapipe pyautogui pycaw numpy
+### 2. Run / Chạy: 
+python main_app.py
+💡 Make sure your webcam is working.
+💡 Đảm bảo webcam đang hoạt động.
 ## 📂 Project Structure / Cấu Trúc Thư Mục Dự Án
 The project is organized with a modular architecture to ensure clarity, maintainability, and ease of future expansion.
 Dự án được tổ chức theo kiến trúc module hóa để đảm bảo sự rõ ràng, dễ bảo trì và thuận tiện cho việc mở rộng trong tương lai.
