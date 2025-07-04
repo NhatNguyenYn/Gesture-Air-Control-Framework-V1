@@ -1,4 +1,4 @@
-# 🖐️ Gesture Control Framework – Framework Điều Khiển Máy Tính Bằng Cử Chỉ Tay
+# 🖐️ Gesture Air-Control Framework – Framework Điều Khiển Máy Tính Bằng Cử Chỉ Tay
 
 🎯 A real-time computer vision framework that enables users to interact with the computer using only hand gestures captured via webcam.  
 🎯 Một framework thị giác máy tính thời gian thực, cho phép người dùng tương tác với máy tính hoàn toàn bằng cử chỉ tay thông qua webcam.
@@ -9,9 +9,9 @@
 
 | Feature | Mô tả |
 |--------|------|
-| ✏️ **Virtual Painter** | Draw on screen by using your index finger like a pen. <br> Vẽ trực tiếp lên màn hình bằng ngón tay trỏ như một cây bút. |
-| 🖱️ **Virtual Mouse** | Control the system cursor: move, click, drag using gestures. <br> Điều khiển con trỏ chuột: di chuyển, nhấp, kéo thả bằng tay. |
-| 🔊 **Volume Control** | Change system volume based on finger distance. <br> Điều chỉnh âm lượng bằng cách thay đổi khoảng cách giữa các ngón tay. |
+| ✏️ **Virtual Air-Painter** | Draw on air by using your index finger like a pen. <br> Vẽ trực tiếp lên không khí bằng ngón tay trỏ như một cây bút. |
+| 🖱️ **Virtual Air-Mouse** | Control the system cursor: move, click, drag using gestures. <br> Điều khiển con trỏ chuột: di chuyển, nhấp, kéo thả bằng tay. |
+| 🔊 **Volume Air-Control** | Change system volume based on finger distance. <br> Điều chỉnh âm lượng bằng cách thay đổi khoảng cách giữa các ngón tay. |
 | 🔍 **Gesture Inspector** | Display live recognition of hand (left/right), fingers up, and key points. <br> Chẩn đoán và hiển thị nhận diện chi tiết bàn tay (trái/phải, số ngón, vị trí...). |
 
 ---
@@ -48,37 +48,92 @@
 ## 🚀 How to Run / Cách chạy chương trình
 
 ### 1. Install dependencies / Cài đặt thư viện:
-```bash
 pip install opencv-python mediapipe pyautogui pycaw numpy
 2. Run / Chạy: python main_app.py
 💡 Make sure your webcam is working.
 💡 Đảm bảo webcam đang hoạt động.
+## 📂 Project Structure / Cấu Trúc Thư Mục Dự Án
+The project is organized with a modular architecture to ensure clarity, maintainability, and ease of future expansion.
+Dự án được tổ chức theo kiến trúc module hóa để đảm bảo sự rõ ràng, dễ bảo trì và thuận tiện cho việc mở rộng trong tương lai.
 ```bash
-📁 Folder Structure / Cấu trúc thư mục
-gesture-control-framework/
-├── main_app.py             # Main entry point / Điểm chạy chính
-├── controllers/            # Gesture modules (mouse, painter, volume...)
-├── hand_tracker/           # Hand tracking & gesture recognition
-├── gui/                    # GUI & visual elements
-├── assets/                 # Icons, images, sample data
-├── utils/                  # Common helper functions
-├── README.md               # Project documentation
-└── requirements.txt        # Python dependencies
+Gesture-Control-Framework/
+│
+├── main.py
+# 🇬🇧 The main entry point to run the application. It initializes the GUI (Tkinter),
+#    starts the multithreading processes, and coordinates all controllers.
+# 🇻🇳 File chính để chạy ứng dụng. Nó khởi tạo giao diện đồ họa (GUI),
+#    bắt đầu các luồng xử lý và điều phối tất cả các controller.
+│
+├── modules/
+│   # 🇬🇧 A Python package containing all the core logic of the application.
+│   # 🇻🇳 Một package Python chứa toàn bộ logic cốt lõi của ứng dụng.
+│   │
+│   ├── __init__.py
+│   │   # 🇬🇧 Marks 'modules' as a Python package.
+│   # 🇻🇳 Đánh dấu thư mục 'modules' là một package Python.
+│   │
+│   ├── hand_tracker.py
+│   │   # 🇬🇧 A dedicated module responsible for hand detection and tracking using MediaPipe.
+│   │   #    It processes the camera feed and extracts hand landmarks.
+│   # 🇻🇳 Module chuyên biệt chịu trách nhiệm phát hiện và theo dõi bàn tay bằng MediaPipe.
+│   │   #    Nó xử lý luồng hình ảnh từ camera và trích xuất các điểm mốc của bàn tay.
+│   │
+│   └── controllers/
+│       # 🇬🇧 A sub-package containing the logic for each specific feature.
+│       # 🇻🇳 Một package con chứa logic cho từng tính năng cụ thể.
+│       │
+│       ├── __init__.py
+│       │   # 🇬🇧 Marks 'controllers' as a Python sub-package.
+│       # 🇻🇳 Đánh dấu thư mục 'controllers' là một package con của Python.
+│       │
+│       ├── drawing_controller.py
+│       │   # 🇬🇧 Handles all logic for the "Virtual Painter" feature.
+│       # 🇻🇳 Xử lý toàn bộ logic cho tính năng "Vẽ Ảo".
+│       │
+│       ├── mouse_controller.py
+│       │   # 🇬🇧 Manages all logic for the "Virtual Mouse" feature, including cursor
+│       │   #    movement and click actions.
+│       # 🇻🇳 Quản lý toàn bộ logic cho tính năng "Chuột Ảo", bao gồm di chuyển
+│       │   #    con trỏ và các hành động click.
+│       │
+│       ├── volume_controller.py
+│       │   # 🇬🇧 Contains the logic for the "Volume Control" feature.
+│       # 🇻🇳 Chứa logic cho tính năng "Điều Khiển Âm Lượng".
+│       │
+│       └── enhanced_finger_counter_controller.py
+│           # 🇬🇧 A diagnostic tool to inspect gesture recognition, displaying
+│           #    hand labels (Left/Right) and which fingers are up.
+│       # 🇻🇳 Một công cụ chẩn đoán để kiểm tra khả năng nhận diện cử chỉ,
+│           #    hiển thị nhãn tay (Trái/Phải) và các ngón tay đang giơ.
+│
+├── requirements.txt
+# 🇬🇧 A file listing all the necessary Python libraries for the project.
+#    Allows for easy one-step installation using `pip install -r requirements.txt`.
+# 🇻🇳 File liệt kê tất cả các thư viện Python cần thiết cho dự án.
+#    Cho phép cài đặt dễ dàng trong một bước bằng lệnh `pip install -r requirements.txt`.
+│
+├── README.md
+# 🇬🇧 This file! It provides an overview of the project, setup instructions, and usage guide.
+# 🇻🇳 Chính là file này! Cung cấp tổng quan về dự án, hướng dẫn cài đặt và sử dụng.
+│
+└── .gitignore (Optional / Tùy chọn)
+    # 🇬🇧 A file that tells Git which files or folders to ignore in the project
+    #    (e.g., __pycache__, virtual environment folders).
+    # 🇻🇳 Một file để chỉ cho Git biết cần bỏ qua những file hoặc thư mục nào
+    #    (ví dụ: __pycache__, thư mục môi trường ảo).
 ```
 ---
 
-📈 Roadmap (v1 → v2) / Kế hoạch nâng cấp
-🖐️ Add custom gesture sets (swipe, rotate…)
-📺 Control external applications (PowerPoint, media player)
-🧠 Integrate ML gesture classifier (custom training)
-🌐 Cross-platform support (Linux/Mac)
-🧪 Performance benchmarking & optimization
+## 📈 Roadmap (v1 → v2) / Kế hoạch nâng cấp
+- 🖐️ Add custom gesture sets (swipe, rotate…)
+- 📺 Control external applications (PowerPoint, media player)
+- 🧠 Integrate ML gesture classifier (custom training)
+- 🌐 Cross-platform support (Linux/Mac)
+- 🧪 Performance benchmarking & optimization
 
 ---
 
 ⚠️ Notes / Ghi chú
-This is a summer research project by a student entering university (HCMUS – University of Science).
-Một dự án mùa hè cá nhân của học sinh chuẩn bị bước vào đại học (ĐH Khoa học Tự nhiên – ĐHQG TP.HCM).
 AI (like ChatGPT) was used as a support tool for code generation. However, architecture design, testing, bug fixing, and idea formulation were done manually.
 
 ---
